@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import FormInput from '~/components/Form/Input'
 import CarNumberResultList from '~/components/CarNumberResult/List'
+import { analyzeCarNumber } from '~/lib/CarNumber/analyze'
 
 const PagesCarNumbers: FC = () => {
   const [carNumbers, setCarNumbers] = useState([])
@@ -27,9 +28,10 @@ const PagesCarNumbers: FC = () => {
   })
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    console.log(data.carNumber)
-    setCarNumbers(data.carNumber)
+    const keys = Object.keys(data.carNumbers)
+    const results = keys.map((key) => analyzeCarNumber(data.carNumbers[key].value)) ?? []
+    // @ts-ignore
+    setCarNumbers(results)
   })
 
   return (
@@ -43,9 +45,9 @@ const PagesCarNumbers: FC = () => {
               <Grid item xs={3}>
                 <FormInput
                   label={'차량번호' + number}
-                  name={`carNumber.${i}.value`}
-                  key={`carNumber.${i}.value`}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  name={`carNumbers.${i}.value`}
+                  key={`carNumbers.${i}.value`}
+                  inputProps={{ inputMode: 'numeric', pattern: '[1-9]*' }}
                   control={control}
                   type="number"
                 />
