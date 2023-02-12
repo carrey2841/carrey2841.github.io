@@ -30,7 +30,7 @@
     "start": "TS_NODE_PROJECT=config/webpack/tsconfig.webpack.json NODE_ENV=development webpack serve --config config/webpack/local.config.ts",
     "build": "TS_NODE_PROJECT=config/webpack/tsconfig.webpack.json webpack",
     "predeploy": "TS_NODE_PROJECT=config/webpack/tsconfig.webpack.json NODE_ENV=production webpack --config config/webpack/prod.config.ts",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -f",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "devDependencies": {
