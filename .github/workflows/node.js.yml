@@ -26,6 +26,10 @@ jobs:
         cache: 'npm'
     - uses: oleksiyrudenko/gha-git-credentials@v2-latest
       with:
+        global: false
+        email: carrey2841@gmail.com
+        name: carrey2841
+        actor: GITHUB_ACTOR
         token: '${{ secrets.CARREY_TOKEN }}'
     - run: |
         yarn install
