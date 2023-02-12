@@ -25,6 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Install dependencies
-      run: yarn install
-    - name: Deploy
-      run: yarn deploy
+      run: npm install
+    - name: Deploy Github Pages
+      run: npm deploy
