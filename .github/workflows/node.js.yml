@@ -28,5 +28,5 @@ jobs:
       with:
         token: '${{ secrets.CARREY_TOKEN }}'
     - run: |
-        yarn run deploy
+        yarn deploy
       
